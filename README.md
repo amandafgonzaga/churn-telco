@@ -4,7 +4,7 @@ Tech Challenge da Fase 1 (12MLET). Uma operadora de telecomunicações está per
 vai da análise exploratória até um modelo de propensão a churn servido via **FastAPI**,
 comparando modelos **linear**, **baseado em árvores** e **rede neural (MLP)** no Scikit-Learn.
 
-> 🎬 Vídeo STAR: _link aqui_ · 📄 [Model Card](docs/model_card.md) · 🧭 [ML Canvas](docs/ml_canvas.md)
+> 🎬 [Vídeo STAR (YouTube)](https://youtu.be/6kZNn47uVPQ) · 📄 [Model Card](docs/model_card.md) · 🧭 [ML Canvas](docs/ml_canvas.md)
 
 ## Arquitetura
 

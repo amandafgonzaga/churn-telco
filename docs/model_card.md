@@ -5,7 +5,7 @@
 - **Versão:** `logistic_regression-20261103-091333` (ver `models/champion.json`)
 - **Tipo:** Regressão Logística dentro de um `sklearn.Pipeline` com imputação, `StandardScaler` e `OneHotEncoder`.
 - **Saída:** probabilidade de churn e decisão binária com o threshold `threshold`, escolhido para minimizar o custo de negócio.
-- **Treino:** _data_, `SEED = 42`, split estratificado 80/20, CV estratificada de 5 folds.
+- **Treino:** 03/11/2026, `SEED = 42`, split estratificado 80/20, CV estratificada de 5 folds.
 - **Responsáveis:** Amanda Ferreira Gonzaga (projeto individual)
 
 ## Uso pretendido
