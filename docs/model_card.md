@@ -20,17 +20,15 @@
 
 ## Métricas
 
-| Métrica | CV (média ± dp) | Teste |
-|---|---|---|
 Campeão: Regressão Logística (`class_weight="balanced"`). A CV usa threshold 0,5; o teste usa o threshold de custo, 0,18.
 
-| Métrica | CV (média ± dp) | Teste |
+| Métrica | CV (média ± dp amostral) | Teste |
 |---|---|---|
-| ROC-AUC | 0,846 ± 0,012 | 0,842 |
-| PR-AUC | 0,660 ± 0,020 | 0,633 |
-| F1 | 0,628 ± 0,023 | 0,549 |
-| Recall | 0,801 ± 0,038 | 0,973 |
-| Precision | 0,517 ± 0,019 | 0,382 |
+| ROC-AUC | 0,846 ± 0,014 | 0,842 |
+| PR-AUC | 0,660 ± 0,022 | 0,633 |
+| F1 | 0,628 ± 0,026 | 0,549 |
+| Recall | 0,801 ± 0,042 | 0,973 |
+| Precision | 0,517 ± 0,021 | 0,382 |
 | Custo de negócio (R$) | — | 57.021 |
 | Custo sem modelo (R$) | — | 326.579 |
 

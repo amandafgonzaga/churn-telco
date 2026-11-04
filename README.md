@@ -103,13 +103,14 @@ uv run ruff check .
 
 ## Resultados
 
-Validação cruzada estratificada de 5 folds no treino (5.634 clientes), com threshold 0,5. Fonte: `docs/experimentos.csv`.
+Validação cruzada estratificada de 5 folds no treino (5.634 clientes), com threshold 0,5: média ± desvio padrão
+amostral entre os folds. Fonte: `docs/experimentos.csv`.
 
 | Modelo | ROC-AUC | PR-AUC | F1 | Recall | Precision |
 |---|---|---|---|---|---|
-| **Regressão Logística (baseline)** | **0,846 ± 0,012** | **0,660 ± 0,020** | 0,628 ± 0,023 | **0,801 ± 0,038** | 0,517 ± 0,019 |
-| Random Forest | 0,845 ± 0,009 | 0,653 ± 0,022 | **0,631 ± 0,014** | 0,761 ± 0,026 | 0,539 ± 0,014 |
-| MLP | 0,842 ± 0,010 | 0,647 ± 0,020 | 0,581 ± 0,019 | 0,522 ± 0,026 | **0,656 ± 0,024** |
+| **Regressão Logística (baseline)** | **0,846 ± 0,014** | **0,660 ± 0,022** | 0,628 ± 0,026 | **0,801 ± 0,042** | 0,517 ± 0,021 |
+| Random Forest | 0,845 ± 0,010 | 0,653 ± 0,025 | **0,631 ± 0,015** | 0,761 ± 0,029 | 0,539 ± 0,016 |
+| MLP | 0,842 ± 0,012 | 0,647 ± 0,022 | 0,581 ± 0,021 | 0,522 ± 0,029 | **0,656 ± 0,027** |
 
 **Campeão: Regressão Logística.** Ela tem a maior ROC-AUC e o modelo mais simples e interpretável.
 Os três modelos ficaram dentro de 1 desvio padrão entre si.
