@@ -33,6 +33,48 @@ EXAMPLE_CUSTOMER = {
     "TotalCharges": 283.5,
 }
 
+LOYAL_CUSTOMER = {
+    **EXAMPLE_CUSTOMER,
+    "tenure": 60,
+    "InternetService": "DSL",
+    "OnlineSecurity": "Yes",
+    "TechSupport": "Yes",
+    "Contract": "Two year",
+    "PaymentMethod": "Credit card (automatic)",
+    "MonthlyCharges": 55.0,
+    "TotalCharges": 3300.0,
+}
+
+NEW_CUSTOMER = {key: value for key, value in EXAMPLE_CUSTOMER.items() if key != "TotalCharges"}
+NEW_CUSTOMER["tenure"] = 0
+
+# Exemplos selecionáveis no Swagger (/docs), no dropdown "Examples" do request body.
+PREDICT_EXAMPLES = {
+    "alto_risco": {
+        "summary": "Alto risco: contrato mensal, 3 meses, fibra",
+        "value": EXAMPLE_CUSTOMER,
+    },
+    "cliente_fiel": {
+        "summary": "Baixo risco: contrato de 2 anos, 60 meses",
+        "value": LOYAL_CUSTOMER,
+    },
+    "cliente_novo": {
+        "summary": "Cliente novo sem TotalCharges (o pipeline imputa)",
+        "value": NEW_CUSTOMER,
+    },
+    "invalido": {
+        "summary": "Inválido: contrato 'Weekly' → HTTP 422",
+        "value": {**EXAMPLE_CUSTOMER, "Contract": "Weekly"},
+    },
+}
+
+PREDICT_BATCH_EXAMPLES = {
+    "alto_risco_e_fiel": {
+        "summary": "Dois clientes: alto risco e fiel",
+        "value": [EXAMPLE_CUSTOMER, LOYAL_CUSTOMER],
+    },
+}
+
 
 class CustomerIn(BaseModel):
     model_config = ConfigDict(json_schema_extra={"examples": [EXAMPLE_CUSTOMER]})

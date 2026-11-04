@@ -9,10 +9,16 @@ import logging
 from contextlib import asynccontextmanager
 from typing import Annotated
 
-from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi import Body, Depends, FastAPI, HTTPException, Request
 
 from churn import __version__
-from churn.api.schemas import CustomerIn, HealthOut, PredictionOut
+from churn.api.schemas import (
+    PREDICT_BATCH_EXAMPLES,
+    PREDICT_EXAMPLES,
+    CustomerIn,
+    HealthOut,
+    PredictionOut,
+)
 from churn.predict import ChurnModel, load_model
 
 logger = logging.getLogger("churn.api")
@@ -60,12 +66,18 @@ LoadedModel = Annotated[ChurnModel, Depends(get_model)]
 
 
 @app.post("/predict", response_model=PredictionOut)
-def predict(customer: CustomerIn, model: LoadedModel) -> PredictionOut:
+def predict(
+    customer: Annotated[CustomerIn, Body(openapi_examples=PREDICT_EXAMPLES)],
+    model: LoadedModel,
+) -> PredictionOut:
     return PredictionOut(**model.predict([customer.model_dump()])[0])
 
 
 @app.post("/predict/batch", response_model=list[PredictionOut])
-def predict_batch(customers: list[CustomerIn], model: LoadedModel) -> list[PredictionOut]:
+def predict_batch(
+    customers: Annotated[list[CustomerIn], Body(openapi_examples=PREDICT_BATCH_EXAMPLES)],
+    model: LoadedModel,
+) -> list[PredictionOut]:
     if not customers:
         return []
     return [PredictionOut(**r) for r in model.predict([c.model_dump() for c in customers])]

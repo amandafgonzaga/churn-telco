@@ -1,6 +1,17 @@
+import pytest
 from fastapi.testclient import TestClient
 
 from churn.api.main import app
+from churn.api.schemas import PREDICT_EXAMPLES
+
+
+@pytest.mark.parametrize("name", PREDICT_EXAMPLES)
+def test_swagger_examples_behave_as_documented(client, name):
+    expected_status = 422 if name == "invalido" else 200
+
+    response = client.post("/predict", json=PREDICT_EXAMPLES[name]["value"])
+
+    assert response.status_code == expected_status
 
 
 def test_health_returns_ok(client):
