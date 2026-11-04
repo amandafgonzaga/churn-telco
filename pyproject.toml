@@ -1,0 +1,55 @@
+[project]
+name = "churn-telco"
+version = "0.1.0"
+description = "Pipeline preditivo de churn (Telco) com Scikit-Learn e API de inferência em FastAPI"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "joblib>=1.4",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "pydantic>=2.7",
+    "scikit-learn>=1.5",
+    "uvicorn[standard]>=0.30",
+]
+
+[project.scripts]
+churn-train = "churn.train:main"
+churn-download = "churn.download:main"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.27",
+    "ipykernel>=6.29",
+    "jupyter>=1.0",
+    "matplotlib>=3.9",
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "seaborn>=0.13",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/churn"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N"]
+ignore = [
+    "N803",  # convenção de ML: X / X_train em maiúscula
+    "N806",
+    "N815",  # nomes de colunas do dataset (camelCase) nos schemas Pydantic
+]

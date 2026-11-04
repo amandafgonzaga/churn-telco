@@ -1,0 +1,39 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# --- Ferramentas ---
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Dados ---
+# O CSV bruto do Telco é pequeno (~1 MB) e fica versionado para reprodutibilidade.
+data/processed/*
+!data/processed/.gitkeep
+
+# --- Modelos / experimentos ---
+# O modelo campeão (models/champion.joblib + champion.json) é versionado de propósito.
+models/*.tmp
+mlruns/
+*.log
+
+# --- Material do desafio (não é entregável do projeto) ---
+*.pdf
+
+# --- SO / IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
